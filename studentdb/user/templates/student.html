@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body>
+    <h2>Student Information</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Mobile No</th>
+                <th>Grade</th>
+                <th>Faculty</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{student.first_name}}</td>
+                <td>{{student.last_name}}</td>
+                <td>{{student.email}}</td>
+                <td>{{student.mobile_no}}</td>
+                <td>{{student.grade}}</td>
+                <td>{{student.faculty}}</td>
+            </tr>
+           {% endfor %}  
+        </tbody>
+    </table>
+
+    <h2>Add Student</h2>
+
+    <form action="{% url 'students' %}" method="post">
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="mobileNo">Mobile No:</label>
+        <input type="tel" id="mobileNo" name="mobileNo" required>
+
+        <label for="grade">Grade:</label>
+        <input type="text" id="grade" name="grade" required>
+
+        <label for="faculty">Faculty:</label>
+        <select id="faculty" name="faculty" required>
+            <option value="Computer Science">Computer Science</option>
+            <option value="IT">IT</option>
+            <!-- Add more options as needed -->
+        </select>
+
+        <input type="submit" value="Add Student">
+    </form>
+
+
+    
+{% endblock %}
